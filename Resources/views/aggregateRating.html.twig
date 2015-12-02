@@ -1,0 +1,24 @@
+{% if view.ratings is defined and view.ratings is iterable %}
+  {% set name = view.seo.metaTitle is defined and view.seo.metaTitle is not null ? view.seo.metaTitle : view.name %}
+  {% set description = view.seo.metaDescription is defined and view.seo.metaDescription ? view.seo.metaDescription : name %}
+  {% set sum = 0 %}
+
+  {% for rating in view.ratings %}
+      {% set sum = sum + rating.value %}
+  {% endfor %}
+  {% set sum = sum / view.ratings|length %}
+  <script type="application/ld+json">
+  {
+    "@context": "http://schema.org/",
+    "@type": "Thing",
+    "name": "{{ name }}",
+    "description": "{{ description }}",
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "{{ sum }}",
+      "bestRating": "5",
+      "ratingCount": "{{ view.ratings|length }}"
+    }
+  }
+  </script>
+{% endif %}
