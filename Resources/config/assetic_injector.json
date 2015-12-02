@@ -1,0 +1,17 @@
+{
+  "require_all":
+  {
+    "javascripts":
+    {
+      "foot": [
+        "../vendor/kartik-v/bootstrap-star-rating/js/star-rating.js"
+      ]
+    },
+    "stylesheets":
+    {
+      "head": [
+        "../vendor/kartik-v/bootstrap-star-rating/css/star-rating.min.css"
+      ]
+    }
+  }
+}
