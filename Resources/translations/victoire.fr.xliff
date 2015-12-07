@@ -30,13 +30,45 @@
         <source>widget_aggregaterating.form.ratingValue.label</source>
         <target state="new">ratingValue</target>
       </trans-unit>
-      <trans-unit id="7" resname="widget_aggregaterating.form.bestRating.label">
-        <source>widget_aggregaterating.form.bestRating.label</source>
-        <target state="new">bestRating</target>
+      <trans-unit id="7" resname="widget_aggregaterating.form.options.size.label">
+        <source>widget_aggregaterating.form.options.size.label</source>
+        <target state="new">Taille des étoiles</target>
       </trans-unit>
-      <trans-unit id="8" resname="widget_aggregaterating.form.worstRating.label">
-        <source>widget_aggregaterating.form.worstRating.label</source>
-        <target state="new">worstRating</target>
+      <trans-unit id="8" resname="widget_aggregaterating.form.message.label">
+        <source>widget_aggregaterating.form.message.label</source>
+        <target state="new">Message à afficher</target>
+      </trans-unit>
+      <trans-unit id="9" resname="widget_aggregaterating.form.message0.label">
+        <source>widget_aggregaterating.form.message0.label</source>
+        <target state="new">Aucun Message</target>
+      </trans-unit>
+      <trans-unit id="10" resname="widget_aggregaterating.form.message1.label">
+        <source>widget_aggregaterating.form.message1.label</source>
+        <target state="new">Nombre de votes</target>
+      </trans-unit>
+      <trans-unit id="11" resname="widget_aggregaterating.form.message2.label">
+        <source>widget_aggregaterating.form.message2.label</source>
+        <target state="new">Moyenne</target>
+      </trans-unit>
+      <trans-unit id="12" resname="widget_aggregaterating.form.message3.label">
+        <source>widget_aggregaterating.form.message3.label</source>
+        <target state="new">Moyenne et nombre de votes</target>
+      </trans-unit>
+      <trans-unit id="9" resname="widget_aggregaterating.show.message0.label">
+        <source>widget_aggregaterating.show.message0.label</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="10" resname="widget_aggregaterating.show.message1.label">
+        <source>widget_aggregaterating.show.message1.label</source>
+        <target state="new">%ratingCount% votes</target>
+      </trans-unit>
+      <trans-unit id="11" resname="widget_aggregaterating.show.message2.label">
+        <source>widget_aggregaterating.show.message2.label</source>
+        <target state="new">%ratingRound%/%bestRating%</target>
+      </trans-unit>
+      <trans-unit id="12" resname="widget_aggregaterating.show.message3.label">
+        <source>widget_aggregaterating.show.message3.label</source>
+        <target state="new">%ratingRound%/%bestRating% sur %ratingCount% votes</target>
       </trans-unit>
     </body>
   </file>
