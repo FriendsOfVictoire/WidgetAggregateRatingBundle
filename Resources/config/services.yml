@@ -19,9 +19,3 @@ services:
         class: Victoire\Widget\AggregateRatingBundle\Form\WidgetAggregateRatingType
         tags:
             - { name: form.type , alias: victoire_widget_form_aggregaterating }
-    victoire.widget.listener.aggregate_rating_listener:
-        class: Victoire\Widget\AggregateRatingBundle\Listener\AggregateRatingListener
-        arguments:
-            - @doctrine.orm.default_entity_manager
-        tags:
-            - { name: kernel.event_listener, event: victoire.on_render_page, method: onRenderPage }
