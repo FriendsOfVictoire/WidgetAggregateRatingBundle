@@ -3,6 +3,20 @@
 {% block content %}
     {{ form_start(ratingForm) }}
         {{ form_widget(ratingForm.value, {'attr' : {'class' : 'hidden'}}) }}
+        <p>
+            {% set ratingSum = 0 %}
+            {% set ratingRound = 0 %}
+            {% if ratings|length == 0 %}
+                {{ "widget_aggregaterating.show.message1.label"|trans({'%ratingCount%': ratings|length}, 'victoire') }}
+            {% else %}
+                {% for rating in ratings %}
+                    {% set ratingSum = ratingSum + rating.value %}
+                {% endfor %}
+                {% set ratingRound = (ratingSum / ratings|length)|round(1, 'floor') %}
+                {% set label = "widget_aggregaterating.show.message" ~ widget.message ~ ".label" %}
+                {{ label|trans({'%ratingCount%': ratings|length, '%ratingRound%' : ratingRound, "%bestRating%" : 5}, 'victoire') }}
+            {% endif %}
+        </p>
         <script>
             $(document).ready(function(){
                 var input = $("#{{ ratingForm.value.vars.id }}");
@@ -29,4 +43,9 @@
             content:"{% for i in 1..widget.options.stars %}{{ widget.options.symbol }}{% endfor %}";
         }
     </style>
+    {% include "VictoireWidgetAggregateRatingBundle::aggregateRating.html.twig" with {
+        'ratings' : ratings,
+        'view' : view,
+        'ratingRound' : ratingRound
+    }%}
 {% endblock content %}
