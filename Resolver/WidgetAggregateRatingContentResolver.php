@@ -56,19 +56,21 @@ class WidgetAggregateRatingContentResolver extends BaseWidgetContentResolver
     {
         $parameters = parent::getWidgetStaticContent($widget);
         $currentView = $this->currentViewHelper->getCurrentView();
-        $rating = $this->entityManager->getRepository("VictoireWidgetAggregateRatingBundle:Rating")->findOneBy(
+        $rating = $this->entityManager->getRepository("VictoireWidgetAggregateRatingBundle:Rating")->findOneOrCreate(
             array(
                 "ipAddress" => $this->request->getClientIp(),
                 "businessEntityId" => $currentView->getBusinessEntityId(),
                 "entityId" => $currentView->getBusinessEntity()->getId()
             )
         );
-        if(!$rating)
-        {
-            $rating = new Rating();
-        }
         $ratingForm = $this->formFactory->create(new RatingType(), $rating);
         $parameters['ratingForm'] = $ratingForm->createView();
+        $parameters['ratings'] = $this->entityManager->getRepository("VictoireWidgetAggregateRatingBundle:Rating")->findBy(
+        array(
+            "businessEntityId" => $currentView->getBusinessEntityId(),
+            "entityId" => $currentView->getBusinessEntity()->getId()
+            )
+        );
         return $parameters;
     }
 

@@ -3,63 +3,44 @@
 namespace Victoire\Widget\AggregateRatingBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
+
 
 /**
  * Rating
  *
  * @ORM\Table("vic_widget_aggregaterating_rating")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Victoire\Widget\AggregateRatingBundle\Repository\RatingRepository")
  */
 class Rating
 {
     /**
      * @var integer
-     *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
-     */
-    private $id;
-
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="value", type="decimal")
+     * @ORM\Column(name="value", type="decimal", precision=2, scale=1)
      */
     private $value;
 
     /**
      * @var integer
-     *
+     * @ORM\Id
      * @ORM\Column(name="businessEntityId", type="string")
      */
     private $businessEntityId;
 
     /**
      * @var integer
-     *
+     * @ORM\Id
      * @ORM\Column(name="entityId", type="integer")
      */
     private $entityId;
 
     /**
      * @var string
-     *
+     * @ORM\Id
+     * @Gedmo\IpTraceable(on="create")
      * @ORM\Column(name="ipAddress", type="string", length=255)
      */
     private $ipAddress;
-
-
-
-    /**
-     * Get id
-     *
-     * @return integer
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
 
     /**
      * Set value

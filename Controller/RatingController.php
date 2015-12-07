@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Charlie
- * Date: 27/11/15
- * Time: 16:15
- */
 
 namespace Victoire\Widget\AggregateRatingBundle\Controller;
 
@@ -27,8 +21,6 @@ class RatingController extends Controller
 {
     /**
      * Submit method.
-     *
-     *
      * @Route("/submit/{businessEntityId}/{entityId}", name="Rating_submit")
      *
      * @return Response
@@ -37,27 +29,19 @@ class RatingController extends Controller
     {
         $userIP = $request->getClientIp();
         $em = $this->getDoctrine()->getManager();
-        $rating = $em->getRepository("VictoireWidgetAggregateRatingBundle:Rating")->findOneBy(
+        $rating = $em->getRepository("Victoire\Widget\AggregateRatingBundle\Entity\Rating")->findOneOrCreate(
             array(
                 "ipAddress" => $userIP,
                 "businessEntityId" => $businessEntityId,
                 "entityId" => $entityId
             )
         );
-        if(!$rating)
-        {
-            $rating = new Rating();
-            $rating->setBusinessEntityId($businessEntityId);
-            $rating->setEntityId($entityId);
-            $rating->setIpAddress($userIP);
-        }
         $ratingForm = $this->createForm(new RatingType(), $rating);
         $ratingForm->handleRequest($request);
         if($ratingForm->isValid())
         {
             $em->persist($rating);
             $em->flush();
-            die('here');
         }
         return new JsonResponse(
             [
