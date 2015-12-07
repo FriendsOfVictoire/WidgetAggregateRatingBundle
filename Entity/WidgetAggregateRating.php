@@ -21,47 +21,54 @@ class WidgetAggregateRating extends Widget
      */
     protected $id;
 
-    private $sizesAvailable = array("xl", "lg", "md", "sm", "xs");
+    private $sizesAvailable = array("xl" => "xl", "lg" => "lg", "md" => "md", "sm" => "sm", "xs" => "xs");
+
+    private $messagesAvailable = array(
+        "widget_aggregaterating.form.message0.label",
+        "widget_aggregaterating.form.message1.label",
+        "widget_aggregaterating.form.message2.label",
+        "widget_aggregaterating.form.message3.label",
+    );
 
     private $defaultOptions = array(
-        'language'                       => 'fr',
-        'stars'                          => 5,
-        'glyphicon'                      => false,
-        'symbol'                         => '\f005',
-        'ratingClass'                    => 'rating-fa',
-        'disabled'                       => false,
-        'readonly'                       => false,
-        'rtl'                            => false,
-        'size'                           => 'md',
-        'showClear'                      => false,
-        'showCaption'                    => false,
-        'starCaptionClasses'             => array(
-            0.5=> 'label label-danger',
-            1=> 'label label-danger',
-            1.5=> 'label label-warning',
-            2=> 'label label-warning',
-            2.5=> 'label label-info',
-            3=> 'label label-info',
-            3.5=> 'label label-primary',
-            4=> 'label label-primary',
-            4.5=> 'label label-success',
-            5=> 'label label-success'
+        'language' => 'fr',
+        'stars' => 5,
+        'glyphicon' => false,
+        'symbol' => '\f005',
+        'ratingClass' => 'rating-fa',
+        'disabled' => false,
+        'readonly' => false,
+        'rtl' => false,
+        'size' => 'md',
+        'showClear' => false,
+        'showCaption' => false,
+        'starCaptionClasses' => array(
+            0.5 => 'label label-danger',
+            1 => 'label label-danger',
+            1.5 => 'label label-warning',
+            2 => 'label label-warning',
+            2.5 => 'label label-info',
+            3 => 'label label-info',
+            3.5 => 'label label-primary',
+            4 => 'label label-primary',
+            4.5 => 'label label-success',
+            5 => 'label label-success'
         ),
-        'clearButton'                => '<i class="fa fa-minus"></i>',
-        'clearButtonBaseClass'       => 'clear-rating',
-        'clearButtonActiveClass'     => 'clear-rating-active',
-        'clearCaptionClass'          => 'label label-default',
-        'clearValue'                 => null,
-        'captionElement'             => null,
-        'clearElement'               => null,
-        'containerClass'             => null,
-        'hoverEnabled'               => true,
-        'hoverChangeCaption'         => true,
-        'hoverChangeStars'           => true,
-        'hoverOnClear'               => true,
-        'defaultCaption'             => '{rating} Stars',
-        'starCaptions'               => array(
-            0.5=> 'Half Star',
+        'clearButton' => '<i class="fa fa-minus"></i>',
+        'clearButtonBaseClass' => 'clear-rating',
+        'clearButtonActiveClass' => 'clear-rating-active',
+        'clearCaptionClass' => 'label label-default',
+        'clearValue' => null,
+        'captionElement' => null,
+        'clearElement' => null,
+        'containerClass' => null,
+        'hoverEnabled' => true,
+        'hoverChangeCaption' => true,
+        'hoverChangeStars' => true,
+        'hoverOnClear' => true,
+        'defaultCaption' => '{rating} Stars',
+        'starCaptions' => array(
+            0.5 => 'Half Star',
             1 => 'One Star',
             1.5 => 'One & Half Star',
             2 => 'Two Stars',
@@ -72,22 +79,29 @@ class WidgetAggregateRating extends Widget
             4.5 => 'Four & Half Stars',
             5 => 'Five Stars'
         ),
-        'clearButtonTitle'           => 'Clear',
-        'clearCaption'               => 'Not Rated',
+        'clearButtonTitle' => 'Clear',
+        'clearCaption' => 'Not Rated',
     );
     /**
      * @var integer
      *
      * @ORM\Column(name="bestRating", type="integer")
      */
-    private $bestRating = 1;
+    private $worstRating = 1;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="worstRating", type="integer")
      */
-    private $worstRating = 5;
+    private $bestRating = 5;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="message", type="integer")
+     */
+    private $message = 1;
 
     /**
      * @var array
@@ -154,6 +168,30 @@ class WidgetAggregateRating extends Widget
     }
 
     /**
+     * Set message
+     *
+     * @param integer $message
+     *
+     * @return WidgetAggregateRating
+     */
+    public function setMessage($message)
+    {
+        $this->message = $message;
+
+        return $this;
+    }
+
+    /**
+     * Get message
+     *
+     * @return integer
+     */
+    public function getMessage()
+    {
+        return $this->message;
+    }
+
+    /**
      * Set worstRating
      *
      * @param integer $worstRating
@@ -190,6 +228,11 @@ class WidgetAggregateRating extends Widget
     public function getSizesAvailable()
     {
         return $this->sizesAvailable;
+    }
+
+    public function getMessagesAvailable()
+    {
+        return $this->messagesAvailable;
     }
 
     /**
