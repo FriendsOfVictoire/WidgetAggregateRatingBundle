@@ -1,0 +1,21 @@
+services:
+    victoire_core.widget_aggregaterating_content_resolver:
+        class: Victoire\Widget\AggregateRatingBundle\Resolver\WidgetAggregateRatingContentResolver
+        parent: victoire_widget.base_widget_content_resolver
+        arguments:
+            - "@victoire_core.current_view"
+            - "@form.factory"
+        tags:
+            - { name: victoire_widget.widget_content_resolver, alias: AggregateRating }
+        calls:
+            - [setRequest, [@request_stack]]
+
+    #entity alias
+    victoire.widget.aggregaterating:
+        class: Victoire\Widget\AggregateRatingBundle\Entity\WidgetAggregateRating
+
+    #form alias
+    victoire.widget.form.aggregaterating:
+        class: Victoire\Widget\AggregateRatingBundle\Form\WidgetAggregateRatingType
+        tags:
+            - { name: form.type , alias: victoire_widget_form_aggregaterating }

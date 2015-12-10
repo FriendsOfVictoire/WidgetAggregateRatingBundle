@@ -1,0 +1,19 @@
+{
+    "name": "friendsofvictoire/aggregaterating-widget",
+    "type": "symfony-bundle",
+    "description": "Victoire AggregateRating widget",
+    "keywords": ["victoire", "AggregateRating", "widget"],
+    "homepage": "http://victoire.io",
+    "license": "MIT",
+    "require": {
+        "php"                      : ">=5.3.3",
+        "kartik-v/bootstrap-star-rating": "@dev",
+        "symfony/framework-bundle" : "~2.3",
+        "kartik-v/bootstrap-star-rating": "@dev",
+        "victoire/victoire"        : "dev-master"    },
+    "autoload": {
+        "psr-0": { "Victoire\\Widget\\AggregateRatingBundle": "" }
+    },
+    "minimum-stability": "dev",
+    "target-dir": "Victoire/Widget/AggregateRatingBundle"
+}

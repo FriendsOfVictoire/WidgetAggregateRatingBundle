@@ -1,0 +1,11 @@
+victoire_core:
+    widgets:
+        AggregateRating:
+            class: "Victoire\\Widget\\AggregateRatingBundle\\Entity\\WidgetAggregateRating"
+            name: AggregateRating
+            
+jms_translation:
+    configs:
+        victoire_aggregaterating_bundle:
+            dirs: ["@VictoireAggregateRatingBundle"]
+            output_dir: "@VictoireAggregateRatingBundle/Resources/translations"
