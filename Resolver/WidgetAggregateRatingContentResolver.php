@@ -7,6 +7,7 @@ use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\Routing\RouterInterface;
 use Victoire\Bundle\CoreBundle\Helper\CurrentViewHelper;
+use Victoire\Bundle\TemplateBundle\Entity\Template;
 use Victoire\Bundle\WidgetBundle\Model\Widget;
 use Victoire\Bundle\WidgetBundle\Resolver\BaseWidgetContentResolver;
 use Victoire\Widget\AggregateRatingBundle\Entity\Rating;
@@ -56,21 +57,28 @@ class WidgetAggregateRatingContentResolver extends BaseWidgetContentResolver
     {
         $parameters = parent::getWidgetStaticContent($widget);
         $currentView = $this->currentViewHelper->getCurrentView();
-        $rating = $this->entityManager->getRepository("VictoireWidgetAggregateRatingBundle:Rating")->findOneOrCreate(
-            array(
-                "ipAddress" => $this->request->getClientIp(),
-                "businessEntityId" => $currentView->getBusinessEntityId(),
-                "entityId" => $currentView->getBusinessEntity()->getId()
-            )
-        );
+
+        if ($currentView instanceof Template) {
+            $rating = new Rating();
+            $parameters['ratings'] = [];
+        } else {
+            $rating = $this->entityManager->getRepository("VictoireWidgetAggregateRatingBundle:Rating")->findOneOrCreate(
+                [
+                    "ipAddress"        => $this->request->getClientIp(),
+                    "businessEntityId" => $currentView->getBusinessEntityId(),
+                    "entityId"         => $currentView->getBusinessEntity()->getId()
+                ]
+            );
+            $parameters['ratings'] = $this->entityManager->getRepository("VictoireWidgetAggregateRatingBundle:Rating")->findBy(
+                [
+                    "businessEntityId" => $currentView->getBusinessEntityId(),
+                    "entityId"         => $currentView->getBusinessEntity()->getId()
+                ]
+            );
+        }
         $ratingForm = $this->formFactory->create(new RatingType(), $rating);
         $parameters['ratingForm'] = $ratingForm->createView();
-        $parameters['ratings'] = $this->entityManager->getRepository("VictoireWidgetAggregateRatingBundle:Rating")->findBy(
-        array(
-            "businessEntityId" => $currentView->getBusinessEntityId(),
-            "entityId" => $currentView->getBusinessEntity()->getId()
-            )
-        );
+
         return $parameters;
     }
 
