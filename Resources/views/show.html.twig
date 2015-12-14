@@ -48,7 +48,7 @@
     </style>
     {% include "VictoireWidgetAggregateRatingBundle::aggregateRating.html.twig" with {
         'ratings' : ratings,
-        'view' : view,
+        'view' : currentView,
         'ratingRound' : ratingRound
     }%}
 {% endblock content %}
