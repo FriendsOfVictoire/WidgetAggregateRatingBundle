@@ -9,7 +9,6 @@
         "php": ">=5.3.3",
         "kartik-v/bootstrap-star-rating": "@dev",
         "symfony/framework-bundle": "~2.3",
-        "kartik-v/bootstrap-star-rating": "@dev",
         "victoire/victoire": "~1.3.0"
     },
     "autoload": {
