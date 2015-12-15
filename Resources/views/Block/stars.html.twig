@@ -1,0 +1,19 @@
+{% if ratingNumber > 0 %}
+{% set id = "input-" ~ view.id %}
+<input id="{{ id }}" value="{{ ratingRound }}">
+<script>
+    $(document).ready(function() {
+        var input = $("#{{ id }}");
+        input.rating({{ options|json_encode|raw }});
+    });
+
+</script>
+<style>
+    .rating-container-rtl:before,
+    .rating-container-rtl .rating-stars:before,
+    .rating-container:before,
+    .rating-container .rating-stars:before{
+        content:"{% for i in 1..options.stars %}{{ options.symbol }}{% endfor %}";
+    }
+</style>
+{% endif %}

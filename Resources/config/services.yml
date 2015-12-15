@@ -19,3 +19,12 @@ services:
         class: Victoire\Widget\AggregateRatingBundle\Form\WidgetAggregateRatingType
         tags:
             - { name: form.type , alias: victoire_widget_form_aggregaterating }
+
+    victoire.widget.twig.aggregate_rating_extension:
+        class: Victoire\Widget\AggregateRatingBundle\Twig\AggregateRatingExtension
+        arguments:
+            - @twig
+            - @doctrine.orm.entity_manager
+            - @victoire_page.page_helper
+        tags:
+            - { name: twig.extension }
