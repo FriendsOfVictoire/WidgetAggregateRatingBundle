@@ -29,7 +29,8 @@ class RatingController extends Controller
     {
         $userIP = $request->getClientIp();
         $em = $this->getDoctrine()->getManager();
-        $rating = $em->getRepository("Victoire\Widget\AggregateRatingBundle\Entity\Rating")->findOneOrCreate(
+        $ratingRepo = $em->getRepository("Victoire\Widget\AggregateRatingBundle\Entity\Rating");
+        $rating = $ratingRepo->findOneOrCreate(
             array(
                 "ipAddress" => $userIP,
                 "businessEntityId" => $businessEntityId,
@@ -43,9 +44,15 @@ class RatingController extends Controller
             $em->persist($rating);
             $em->flush();
         }
+        $values = $ratingRepo->getRatingValues([
+            "businessEntityId" => $businessEntityId,
+            "entityId" => $entityId
+        ]);
         return new JsonResponse(
             [
                 'success' => true,
+                'ratingRound' => $values['ratingRound'],
+                'ratingNumber' => $values['ratingNumber'],
             ]
         );
     }
