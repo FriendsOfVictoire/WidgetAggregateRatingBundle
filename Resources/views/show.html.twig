@@ -14,7 +14,7 @@
                 {% endfor %}
                 {% set ratingRound = (ratingSum / ratings|length)|round(1, 'floor') %}
                 {% set label = "widget_aggregaterating.show.message" ~ widget.message ~ ".label" %}
-                {{ label|trans({'%ratingCount%': ratings|length, '%ratingRound%' : ratingRound, "%bestRating%" : 5}, 'victoire') }}
+                {{ label|trans({'%ratingCount%': ratings|length, '%ratingRound%' : ratingRound, "%bestRating%" : 5, '%widgetId%' : widget.id}, 'victoire')|raw }}
             {% endif %}
         </p>
         <script>
@@ -30,7 +30,16 @@
                     $.ajax({
                         url: "{{ path('Rating_submit', {'businessEntityId' : currentView.businessEntityId, 'entityId' : currentView.businessEntity.id} ) }}",
                         type: form.attr('method'),
-                        data: form.serialize()
+                        data: form.serialize(),
+                        success: function(response){
+                            var ratingRound = Math.round(response.ratingRound);
+                            if(response.ratingRound != ratingRound)
+                            {
+                                ratingRound = Math.round(response.ratingRound * 10) / 10;
+                            }
+                            $('.rating-round-{{ widget.id }}').html(ratingRound);
+                            $('.rating-count-{{ widget.id }}').html(response.ratingNumber);
+                        }
                     });
                 });
                 {% endif %}

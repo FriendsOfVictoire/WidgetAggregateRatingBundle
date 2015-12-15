@@ -60,15 +60,15 @@
       </trans-unit>
       <trans-unit id="10" resname="widget_aggregaterating.show.message1.label">
         <source>widget_aggregaterating.show.message1.label</source>
-        <target state="new">%ratingCount% votes</target>
+        <target state="new"><![CDATA[<span class="rating-count-%widgetId%">%ratingCount%</span> votes]]></target>
       </trans-unit>
       <trans-unit id="11" resname="widget_aggregaterating.show.message2.label">
         <source>widget_aggregaterating.show.message2.label</source>
-        <target state="new">%ratingRound%/%bestRating%</target>
+        <target state="new"><![CDATA[<span class="rating-round-%widgetId%">%ratingRound%</span>/%bestRating%]]></target>
       </trans-unit>
       <trans-unit id="12" resname="widget_aggregaterating.show.message3.label">
         <source>widget_aggregaterating.show.message3.label</source>
-        <target state="new">%ratingRound%/%bestRating% sur %ratingCount% votes</target>
+        <target state="new"><![CDATA[<span class="rating-round-%widgetId%">%ratingRound%</span>/%bestRating% sur <span class="rating-count-%widgetId%">%ratingCount%</span> votes]]></target>
       </trans-unit>
     </body>
   </file>
