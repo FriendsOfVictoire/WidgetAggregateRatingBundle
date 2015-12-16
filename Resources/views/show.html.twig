@@ -3,18 +3,18 @@
 {% block content %}
     {{ form_start(ratingForm) }}
         {{ form_widget(ratingForm.value, {'attr' : {'class' : 'hidden'}}) }}
-        <p>
+        <p{% if businessEntityId is defined %} class="label-{{ businessEntityId }}-{{ entityId }}"{% endif %}>
             {% set ratingSum = 0 %}
             {% set ratingRound = 0 %}
             {% if ratings|length == 0 %}
-                {{ "widget_aggregaterating.show.message1.label"|trans({'%ratingCount%': ratings|length}, 'victoire') }}
+                {{ "widget_aggregaterating.show.message1.label"|transchoice(0 , {'%ratingCount%': ratings|length}, 'victoire')|raw }}
             {% else %}
                 {% for rating in ratings %}
                     {% set ratingSum = ratingSum + rating.value %}
                 {% endfor %}
                 {% set ratingRound = (ratingSum / ratings|length)|round(1, 'floor') %}
                 {% set label = "widget_aggregaterating.show.message" ~ widget.message ~ ".label" %}
-                {{ label|trans({'%ratingCount%': ratings|length, '%ratingRound%' : ratingRound, "%bestRating%" : 5, '%widgetId%' : widget.id}, 'victoire')|raw }}
+                {{ label|transchoice(ratings|length , {'%ratingCount%': ratings|length, '%ratingRound%' : ratingRound, "%bestRating%" : 5}, 'victoire')|raw }}
             {% endif %}
         </p>
         <script>
@@ -37,8 +37,12 @@
                             {
                                 ratingRound = Math.round(response.ratingRound * 10) / 10;
                             }
-                            $('.rating-round-{{ widget.id }}').html(ratingRound);
-                            $('.rating-count-{{ widget.id }}').html(response.ratingNumber);
+                            $('.label-' + response.businessEntityId + '-' + response.entityId).each(function(){
+                                console.log($(this));
+                                console.log($(this).children('.rating-round'));
+                                $(this).children('.rating-round').html(ratingRound);
+                                $(this).children('.rating-count').html(response.ratingNumber);
+                            })
                         }
                     });
                 });

@@ -51,6 +51,8 @@ class RatingController extends Controller
         return new JsonResponse(
             [
                 'success' => true,
+                "businessEntityId" => $businessEntityId,
+                "entityId" => $entityId,
                 'ratingRound' => $values['ratingRound'],
                 'ratingNumber' => $values['ratingNumber'],
             ]
