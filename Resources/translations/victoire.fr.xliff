@@ -60,15 +60,15 @@
       </trans-unit>
       <trans-unit id="10" resname="widget_aggregaterating.show.message1.label">
         <source>widget_aggregaterating.show.message1.label</source>
-        <target state="new"><![CDATA[<span class="rating-count-%widgetId%">%ratingCount%</span> votes]]></target>
+        <target state="new">{0, 1}<![CDATA[<span class="rating-count">%ratingCount%</span> vote]]>|]1,Inf[<![CDATA[<span class="rating-count">%ratingCount%</span> votes]]></target>
       </trans-unit>
       <trans-unit id="11" resname="widget_aggregaterating.show.message2.label">
         <source>widget_aggregaterating.show.message2.label</source>
-        <target state="new"><![CDATA[<span class="rating-round-%widgetId%">%ratingRound%</span>/%bestRating%]]></target>
+        <target state="new"><![CDATA[<span class="rating-round">%ratingRound%</span>/%bestRating%]]></target>
       </trans-unit>
       <trans-unit id="12" resname="widget_aggregaterating.show.message3.label">
         <source>widget_aggregaterating.show.message3.label</source>
-        <target state="new"><![CDATA[<span class="rating-round-%widgetId%">%ratingRound%</span>/%bestRating% sur <span class="rating-count-%widgetId%">%ratingCount%</span> votes]]></target>
+        <target state="new">{0, 1}<![CDATA[<span class="rating-round">%ratingRound%</span>/%bestRating% sur <span class="rating-count">%ratingCount%</span> vote]]>|]1,Inf[<![CDATA[<span class="rating-round">%ratingRound%</span>/%bestRating% sur <span class="rating-count">%ratingCount%</span> votes]]></target>
       </trans-unit>
     </body>
   </file>
