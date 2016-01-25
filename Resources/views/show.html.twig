@@ -59,9 +59,12 @@
             content:"{% for i in 1..widget.options.stars %}{{ widget.options.symbol }}{% endfor %}";
         }
     </style>
-    {% include "VictoireWidgetAggregateRatingBundle::aggregateRating.html.twig" with {
-        'ratings' : ratings,
-        'view' : currentView,
-        'ratingRound' : ratingRound
-    }%}
+    {% if ratings is defined and ratings is iterable %}
+        {% include "VictoireWidgetAggregateRatingBundle::Block/microdata.html.twig" with {
+            'ratings' : ratings,
+            'view' : currentView,
+            'ratingRound' : ratingRound,
+            'ratingNumber' : ratings|length
+        }%}
+    {% endif %}
 {% endblock content %}
