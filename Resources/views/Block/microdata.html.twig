@@ -2,7 +2,7 @@
 {% set name = view.seo.metaTitle is defined and view.seo.metaTitle is not null ? view.seo.metaTitle : view.name %}
 {% set description = view.seo.metaDescription is defined and view.seo.metaDescription ? view.seo.metaDescription : name %}
 <div itemscope itemtype="http://schema.org/Thing" class="hidden">
-    <h2 itemprop="name">{{ name }}</h2>
+    <div itemprop="name">{{ name }}</div>
     <div itemprop="description">{{ description }}</div>
     <div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">
         <div>
