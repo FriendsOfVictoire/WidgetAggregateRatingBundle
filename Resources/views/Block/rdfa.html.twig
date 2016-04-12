@@ -2,7 +2,7 @@
 {% set name = view.seo.metaTitle is defined and view.seo.metaTitle is not null ? view.seo.metaTitle : view.name %}
 {% set description = view.seo.metaDescription is defined and view.seo.metaDescription ? view.seo.metaDescription : name %}
 <div vocab="http://schema.org/" typeof="CreativeWork">
-    <h2 property="name">{{ name }}</h2>
+    <div property="name">{{ name }}</div>
     <div property="description">{{ description }}</div>
     <div property="aggregateRating" typeof="AggregateRating">
         <div>Book rating:
