@@ -4,7 +4,8 @@ namespace Victoire\Widget\AggregateRatingBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
+use Victoire\Widget\AggregateRatingBundle\Entity\Rating;
 
 class RatingType extends AbstractType
 {
@@ -20,20 +21,12 @@ class RatingType extends AbstractType
     }
     
     /**
-     * @param OptionsResolverInterface $resolver
+     * @param OptionsResolver $resolver
      */
-    public function setDefaultOptions(OptionsResolverInterface $resolver)
+    public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'Victoire\Widget\AggregateRatingBundle\Entity\Rating'
+            'data_class' => Rating::class
         ));
-    }
-
-    /**
-     * @return string
-     */
-    public function getName()
-    {
-        return 'victoire_widget_aggregateratingbundle_rating';
     }
 }

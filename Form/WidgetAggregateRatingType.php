@@ -2,7 +2,9 @@
 
 namespace Victoire\Widget\AggregateRatingBundle\Form;
 
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 use Victoire\Bundle\CoreBundle\Form\WidgetType;
 use Victoire\Widget\AggregateRatingBundle\Entity\WidgetAggregateRating;
@@ -21,12 +23,12 @@ class WidgetAggregateRatingType extends WidgetType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('options_size', "choice", array(
+            ->add('options_size', ChoiceType::class, array(
                     'property_path' => "options[size]",
                     'choices' => $builder->getData()->getSizesAvailable(),
                     'label' => 'widget_aggregaterating.form.options.size.label'
             ))
-            ->add('message', "choice", array(
+            ->add('message', ChoiceType::class, array(
                     'choices' => $builder->getData()->getMessagesAvailable(),
                     'label' => 'widget_aggregaterating.form.message.label'
             ));
@@ -37,26 +39,16 @@ class WidgetAggregateRatingType extends WidgetType
 
     /**
      * bind form to WidgetAggregateRating entity
-     * @param OptionsResolverInterface $resolver
+     * @param OptionsResolver $resolver
      */
-    public function setDefaultOptions(OptionsResolverInterface $resolver)
+    public function configureOptions(OptionsResolver $resolver)
     {
-        parent::setDefaultOptions($resolver);
+        parent::configureOptions($resolver);
 
         $resolver->setDefaults(array(
-            'data_class'         => 'Victoire\Widget\AggregateRatingBundle\Entity\WidgetAggregateRating',
+            'data_class'         => WidgetAggregateRating::class,
             'widget'             => 'AggregateRating',
             'translation_domain' => 'victoire'
         ));
-    }
-
-    /**
-     * get form name
-     *
-     * @return string The form name
-     */
-    public function getName()
-    {
-        return 'victoire_widget_form_aggregaterating';
     }
 }
