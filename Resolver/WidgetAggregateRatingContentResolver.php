@@ -6,6 +6,7 @@ namespace Victoire\Widget\AggregateRatingBundle\Resolver;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\Routing\RouterInterface;
+use Victoire\Bundle\BusinessPageBundle\Entity\BusinessPage;
 use Victoire\Bundle\CoreBundle\Helper\CurrentViewHelper;
 use Victoire\Bundle\TemplateBundle\Entity\Template;
 use Victoire\Bundle\WidgetBundle\Model\Widget;
@@ -62,8 +63,15 @@ class WidgetAggregateRatingContentResolver extends BaseWidgetContentResolver
             $rating = new Rating();
             $parameters['ratings'] = [];
         } else {
-            $businessEntityId = $currentView->getBusinessEntityId();
-            $entityId = $currentView->getBusinessEntity()->getId();
+            if($currentView instanceof BusinessPage)
+            {
+                $businessEntityId = $currentView->getBusinessEntityId();
+                $entityId = $currentView->getBusinessEntity()->getId();
+            }else{
+                $ref = new \ReflectionClass($currentView);
+                $businessEntityId = strtolower($ref->getShortName());
+                $entityId = $currentView->getId();
+            };
             $rating = $this->entityManager->getRepository("VictoireWidgetAggregateRatingBundle:Rating")->findOneOrCreate(
                 [
                     "ipAddress"        => $this->request->getClientIp(),

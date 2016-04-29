@@ -23,12 +23,12 @@
                 var input = $("#{{ ratingForm.value.vars.id }}");
                 input.removeClass('hidden');
                 input.rating({{ widget.options|json_encode|raw }});
-                {% if currentView.businessEntity is defined %}
+                {% if entityId is defined %}
                 input.on('rating.change', function(event) {
 
                     var form = $($(this).parents('form')[0]);
                     $.ajax({
-                        url: "{{ path('Rating_submit', {'businessEntityId' : currentView.businessEntityId, 'entityId' : currentView.businessEntity.id} ) }}",
+                        url: "{{ path('Rating_submit', {'businessEntityId' : businessEntityId, 'entityId' : entityId} ) }}",
                         type: form.attr('method'),
                         data: form.serialize(),
                         success: function(response){

@@ -6,10 +6,10 @@
     "homepage": "http://victoire.io",
     "license": "MIT",
     "require": {
-        "php": ">=5.3.3",
+        "php": ">=5.5.9",
         "kartik-v/bootstrap-star-rating": "@dev",
-        "symfony/framework-bundle": "~2.3",
-        "victoire/victoire": "~1.3"
+        "symfony/framework-bundle": "~2.8|~3.0",
+        "victoire/victoire": "~1.5"
     },
     "autoload": {
         "psr-0": { "Victoire\\Widget\\AggregateRatingBundle": "" }
@@ -18,7 +18,7 @@
     "target-dir": "Victoire/Widget/AggregateRatingBundle",
     "extra": {
         "branch-alias": {
-            "dev-master": "1.3.x-dev"
+            "dev-master": "1.5.x-dev"
         }
     }
 }
