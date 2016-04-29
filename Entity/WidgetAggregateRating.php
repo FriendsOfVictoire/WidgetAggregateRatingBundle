@@ -34,7 +34,7 @@ class WidgetAggregateRating extends Widget
         'language' => 'fr',
         'stars' => 5,
         'glyphicon' => false,
-        'symbol' => '\f005',
+        'symbol' => '',
         'ratingClass' => 'rating-fa',
         'disabled' => false,
         'readonly' => false,
@@ -81,6 +81,8 @@ class WidgetAggregateRating extends Widget
         ),
         'clearButtonTitle' => 'Clear',
         'clearCaption' => 'Not Rated',
+        'filledStar'=> '<i class="fa fa-star"></i>',
+        'emptyStar'=> '<i class="fa fa-star-o"></i>',
     );
     /**
      * @var integer
