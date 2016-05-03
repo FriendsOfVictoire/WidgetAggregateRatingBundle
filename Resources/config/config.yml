@@ -3,7 +3,8 @@ victoire_core:
         AggregateRating:
             class: "Victoire\\Widget\\AggregateRatingBundle\\Entity\\WidgetAggregateRating"
             name: AggregateRating
-            
+            cache: false
+
 jms_translation:
     configs:
         victoire_aggregaterating_bundle:
