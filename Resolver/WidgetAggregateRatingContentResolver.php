@@ -2,11 +2,10 @@
 
 namespace Victoire\Widget\AggregateRatingBundle\Resolver;
 
-
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\RequestStack;
-use Symfony\Component\Routing\RouterInterface;
 use Victoire\Bundle\BusinessPageBundle\Entity\BusinessPage;
+use Victoire\Bundle\BusinessPageBundle\Entity\BusinessTemplate;
 use Victoire\Bundle\CoreBundle\Helper\CurrentViewHelper;
 use Victoire\Bundle\TemplateBundle\Entity\Template;
 use Victoire\Bundle\WidgetBundle\Model\Widget;
@@ -15,7 +14,7 @@ use Victoire\Widget\AggregateRatingBundle\Entity\Rating;
 use Victoire\Widget\AggregateRatingBundle\Form\RatingType;
 
 /**
- * CRUD operations on WidgetAggregateRating Widget
+ * CRUD operations on WidgetAggregateRating Widget.
  *
  * The widget view has two parameters: widget and content
  *
@@ -49,9 +48,10 @@ class WidgetAggregateRatingContentResolver extends BaseWidgetContentResolver
         $this->formFactory = $formFactory;
     }
     /**
-     * Get the static content of the widget
+     * Get the static content of the widget.
      *
      * @param Widget $widget
+     *
      * @return string The static content
      */
     public function getWidgetStaticContent(Widget $widget)
@@ -62,31 +62,34 @@ class WidgetAggregateRatingContentResolver extends BaseWidgetContentResolver
         if ($currentView instanceof Template) {
             $rating = new Rating();
             $parameters['ratings'] = [];
+            $parameters['entityId'] = 0;
+            if ($currentView instanceof BusinessTemplate) {
+                $parameters['businessEntityId'] = $currentView->getBusinessEntityId();
+            }
         } else {
-            if($currentView instanceof BusinessPage)
-            {
+            if ($currentView instanceof BusinessPage) {
                 $businessEntityId = $currentView->getBusinessEntityId();
                 $entityId = $currentView->getBusinessEntity()->getId();
-            }else{
+            } else {
                 $ref = new \ReflectionClass($currentView);
                 $businessEntityId = strtolower($ref->getShortName());
                 $entityId = $currentView->getId();
             };
-            $rating = $this->entityManager->getRepository("VictoireWidgetAggregateRatingBundle:Rating")->findOneOrCreate(
+            $rating = $this->entityManager->getRepository('VictoireWidgetAggregateRatingBundle:Rating')->findOneOrCreate(
                 [
-                    "ipAddress"        => $this->request->getClientIp(),
-                    "businessEntityId" => $businessEntityId,
-                    "entityId"         => $entityId
+                    'ipAddress' => $this->request->getClientIp(),
+                    'businessEntityId' => $businessEntityId,
+                    'entityId' => $entityId,
                 ]
             );
-            $parameters['ratings'] = $this->entityManager->getRepository("VictoireWidgetAggregateRatingBundle:Rating")->findBy(
+            $parameters['ratings'] = $this->entityManager->getRepository('VictoireWidgetAggregateRatingBundle:Rating')->findBy(
                 [
-                    "businessEntityId" => $businessEntityId,
-                    "entityId"         => $entityId
+                    'businessEntityId' => $businessEntityId,
+                    'entityId' => $entityId,
                 ]
             );
-            $parameters["businessEntityId"] = $businessEntityId;
-            $parameters["entityId"] = $entityId;
+            $parameters['businessEntityId'] = $businessEntityId;
+            $parameters['entityId'] = $entityId;
         }
         $ratingForm = $this->formFactory->create(new RatingType(), $rating);
         $parameters['ratingForm'] = $ratingForm->createView();
@@ -95,8 +98,10 @@ class WidgetAggregateRatingContentResolver extends BaseWidgetContentResolver
     }
 
     /**
-     * Get the business entity content
+     * Get the business entity content.
+     *
      * @param Widget $widget
+     *
      * @return string
      */
     public function getWidgetBusinessEntityContent(Widget $widget)
@@ -105,7 +110,7 @@ class WidgetAggregateRatingContentResolver extends BaseWidgetContentResolver
     }
 
     /**
-     * Get the content of the widget by the entity linked to it
+     * Get the content of the widget by the entity linked to it.
      *
      * @param Widget $widget
      *
@@ -117,9 +122,10 @@ class WidgetAggregateRatingContentResolver extends BaseWidgetContentResolver
     }
 
     /**
-     * Get the content of the widget for the query mode
+     * Get the content of the widget for the query mode.
      *
      * @param Widget $widget
+     *
      * @throws \Exception
      */
     public function getWidgetQueryContent(Widget $widget)
