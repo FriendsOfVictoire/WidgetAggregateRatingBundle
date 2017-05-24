@@ -54,19 +54,19 @@
         <source>widget_aggregaterating.form.message3.label</source>
         <target state="new">Moyenne et nombre de votes</target>
       </trans-unit>
-      <trans-unit id="9" resname="widget_aggregaterating.show.message0.label">
+      <trans-unit id="13" resname="widget_aggregaterating.show.message0.label">
         <source>widget_aggregaterating.show.message0.label</source>
         <target state="new"></target>
       </trans-unit>
-      <trans-unit id="10" resname="widget_aggregaterating.show.message1.label">
+      <trans-unit id="14" resname="widget_aggregaterating.show.message1.label">
         <source>widget_aggregaterating.show.message1.label</source>
         <target state="new">{0, 1}<![CDATA[<span class="rating-count">%ratingCount%</span> vote]]>|]1,Inf[<![CDATA[<span class="rating-count">%ratingCount%</span> votes]]></target>
       </trans-unit>
-      <trans-unit id="11" resname="widget_aggregaterating.show.message2.label">
+      <trans-unit id="15" resname="widget_aggregaterating.show.message2.label">
         <source>widget_aggregaterating.show.message2.label</source>
         <target state="new"><![CDATA[<span class="rating-round">%ratingRound%</span>/%bestRating%]]></target>
       </trans-unit>
-      <trans-unit id="12" resname="widget_aggregaterating.show.message3.label">
+      <trans-unit id="16" resname="widget_aggregaterating.show.message3.label">
         <source>widget_aggregaterating.show.message3.label</source>
         <target state="new">{0, 1}<![CDATA[<span class="rating-round">%ratingRound%</span>/%bestRating% sur <span class="rating-count">%ratingCount%</span> vote]]>|]1,Inf[<![CDATA[<span class="rating-round">%ratingRound%</span>/%bestRating% sur <span class="rating-count">%ratingCount%</span> votes]]></target>
       </trans-unit>
