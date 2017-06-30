@@ -1,14 +1,13 @@
 
 {% set name = view.seo.metaTitle is defined and view.seo.metaTitle is not null ? view.seo.metaTitle : view.name %}
 {% set description = view.seo.metaDescription is defined and view.seo.metaDescription ? view.seo.metaDescription : name %}
-<div itemscope itemtype="http://schema.org/CreativeWork" class="hidden">
-    <div itemprop="name">{{ name }}</div>
-    <div itemprop="description">{{ description }}</div>
-    <div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">
-        <div>
-            <span itemprop="ratingValue">{{ ratingRound }}</span>
-            <span itemprop="bestRating">5</span>
-            <span itemprop="ratingCount">{{ ratingNumber }}</span>
-        </div>
+<div itemscope itemtype="http://schema.org/AggregateRating"  class="hidden">
+    <span itemprop="ratingValue">{{ ratingRound }}</span>
+    <span itemprop="bestRating">5</span>
+    <span itemprop="worstRating">0.5</span>
+    <span itemprop="ratingCount">{{ ratingNumber }}</span>
+    <div itemprop="itemReviewed" itemscope itemtype="http://schema.org/CreativeWork">
+        <div itemprop="name">{{ name }}</div>
+        <div itemprop="description">{{ description }}</div>
     </div>
 </div>

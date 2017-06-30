@@ -12,3 +12,15 @@
         </div>
     </div>
 </div>
+<div vocab="http://schema.org/" typeof="AggregateRating">
+    <span property="ratingValue">{{ ratingRound }}</span>
+    <span property="bestRating">5</span>
+    <span property="worstRating">0.5</span>
+    <span property="ratingCount">{{ ratingNumber }}</span>
+    <div property="itemReviewed" typeof="CreativeWork">
+        <div>Item reviewed:
+            <div property="name">{{ name }}</div>
+            <div property="description">{{ description }}</div>
+        </div>
+    </div>
+</div>
