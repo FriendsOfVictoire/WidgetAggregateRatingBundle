@@ -4,14 +4,15 @@
 <script type="application/ld+json">
 {
   "@context": "http://schema.org/",
-  "@type": "CreativeWork",
-  "name": "{{ name }}",
-  "description": "{{ description }}",
-  "aggregateRating": {
-    "@type": "AggregateRating",
-    "ratingValue": "{{ ratingRound }}",
-    "bestRating": "5",
-    "ratingCount": "{{ ratingNumber }}"
+  "@type": "AggregateRating",
+  "ratingValue": "{{ ratingRound }}",
+  "bestRating": "5",
+  "worstRating": "0.5",
+  "ratingCount": "{{ ratingNumber }}"
+  "itemReviewed": {
+    "@type": "CreativeWork",
+    "name": "{{ name }}",
+    "description": "{{ description }}",
   }
 }
 </script>
