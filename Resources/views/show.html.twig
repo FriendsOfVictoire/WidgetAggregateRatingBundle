@@ -60,7 +60,7 @@
         }
     </style>
     {% if ratings is defined and ratings is iterable %}
-        {% include "VictoireWidgetAggregateRatingBundle::Block/microdata.html.twig" with {
+        {% include "VictoireWidgetAggregateRatingBundle::Block/json.html.twig" with {
             'ratings' : ratings,
             'view' : currentView,
             'ratingRound' : ratingRound,

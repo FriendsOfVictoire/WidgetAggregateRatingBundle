@@ -1,4 +1,3 @@
-
 {% set name = view.seo.metaTitle is defined and view.seo.metaTitle is not null ? view.seo.metaTitle : view.name %}
 {% set description = view.seo.metaDescription is defined and view.seo.metaDescription ? view.seo.metaDescription : name %}
 <script type="application/ld+json">
@@ -9,10 +8,10 @@
   "bestRating": "5",
   "worstRating": "0.5",
   "ratingCount": "{{ ratingNumber }}"
+  "name": "{{ name }}",
+  "description": "{{ description }}",
   "itemReviewed": {
     "@type": "CreativeWork",
-    "name": "{{ name }}",
-    "description": "{{ description }}",
   }
 }
 </script>
