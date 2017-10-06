@@ -30,13 +30,45 @@
         <source>widget_aggregaterating.form.ratingValue.label</source>
         <target state="new">ratingValue</target>
       </trans-unit>
-      <trans-unit id="7" resname="widget_aggregaterating.form.bestRating.label">
-        <source>widget_aggregaterating.form.bestRating.label</source>
-        <target state="new">bestRating</target>
+      <trans-unit id="7" resname="widget_aggregaterating.form.options.size.label">
+        <source>widget_aggregaterating.form.options.size.label</source>
+        <target state="new">Stars size</target>
       </trans-unit>
-      <trans-unit id="8" resname="widget_aggregaterating.form.worstRating.label">
-        <source>widget_aggregaterating.form.worstRating.label</source>
-        <target state="new">worstRating</target>
+      <trans-unit id="8" resname="widget_aggregaterating.form.message.label">
+        <source>widget_aggregaterating.form.message.label</source>
+        <target state="new">Message</target>
+      </trans-unit>
+      <trans-unit id="9" resname="widget_aggregaterating.form.message0.label">
+        <source>widget_aggregaterating.form.message0.label</source>
+        <target state="new">No message</target>
+      </trans-unit>
+      <trans-unit id="10" resname="widget_aggregaterating.form.message1.label">
+        <source>widget_aggregaterating.form.message1.label</source>
+        <target state="new">Vote number</target>
+      </trans-unit>
+      <trans-unit id="11" resname="widget_aggregaterating.form.message2.label">
+        <source>widget_aggregaterating.form.message2.label</source>
+        <target state="new">Average</target>
+      </trans-unit>
+      <trans-unit id="12" resname="widget_aggregaterating.form.message3.label">
+        <source>widget_aggregaterating.form.message3.label</source>
+        <target state="new">Average and vote number</target>
+      </trans-unit>
+      <trans-unit id="13" resname="widget_aggregaterating.show.message0.label">
+        <source>widget_aggregaterating.show.message0.label</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="14" resname="widget_aggregaterating.show.message1.label">
+        <source>widget_aggregaterating.show.message1.label</source>
+        <target state="new">{0, 1}<![CDATA[<span class="rating-count">%ratingCount%</span> vote]]>|]1,Inf[<![CDATA[<span class="rating-count">%ratingCount%</span> votes]]></target>
+      </trans-unit>
+      <trans-unit id="15" resname="widget_aggregaterating.show.message2.label">
+        <source>widget_aggregaterating.show.message2.label</source>
+        <target state="new"><![CDATA[<span class="rating-round">%ratingRound%</span>/%bestRating%]]></target>
+      </trans-unit>
+      <trans-unit id="16" resname="widget_aggregaterating.show.message3.label">
+        <source>widget_aggregaterating.show.message3.label</source>
+        <target state="new">{0, 1}<![CDATA[<span class="rating-round">%ratingRound%</span>/%bestRating% sur <span class="rating-count">%ratingCount%</span> vote]]>|]1,Inf[<![CDATA[<span class="rating-round">%ratingRound%</span>/%bestRating% per <span class="rating-count">%ratingCount%</span> votes]]></target>
       </trans-unit>
     </body>
   </file>
